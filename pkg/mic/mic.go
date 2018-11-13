@@ -198,7 +198,7 @@ func (c *Client) Sync(exit <-chan struct{}) {
 					// In such a case, we will skip it from matching binding.
 					// This will ensure that the new assigned ids created will not have the
 					// one associated with this azure identity.
-					glog.V(5).Info("%s identity not found when using %s binding", binding.Spec.AzureIdentity, binding.Name)
+					glog.V(5).Infof("%s identity not found when using %s binding", binding.Spec.AzureIdentity, binding.Name)
 				}
 			}
 		}
@@ -219,7 +219,7 @@ func (c *Client) Sync(exit <-chan struct{}) {
 			beginDeletion := time.Now()
 			workDone = true
 			for _, delID := range *deleteList {
-				glog.V(5).Infof("Deletion of id: ", delID.Name)
+				glog.V(5).Infof("Deletion of id: %s", delID.Name)
 				inUse := c.CheckIfInUse(delID, newAssignedIDs)
 				removedBinding := delID.Spec.AzureBindingRef
 				// The inUse here checks if there are pods which are using the MSI in the newAssignedIDs.
