@@ -33,3 +33,4 @@ steps:
     go test -v $(go list ./... | grep -v test/e2e)
   workingDirectory: '$(modulePath)'
   displayName: 'Get dependencies, then build'
+  failOnStderr: false
