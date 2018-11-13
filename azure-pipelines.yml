@@ -32,6 +32,6 @@ steps:
         dep ensure
     fi
     go list ./... | grep -v test/e2e
-    go test -v $(go list ./... | grep -v test/e2e) 
+    go test -v $(go list ./... | grep -v test/) 
   workingDirectory: '$(modulePath)'
   displayName: 'Get dependencies, then build'
