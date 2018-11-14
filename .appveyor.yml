@@ -1,0 +1,14 @@
+version: 1.0.{build}
+platform:
+  - x64
+
+image: Visual Studio 2017
+
+install:
+  - cmd: set PATH=%PATH%;%PYTHON%/Scripts/
+
+build_script:
+  - cmd: cmake --build . --config Release
+
+test_script:
+  - cmd: raytracerb.exe
